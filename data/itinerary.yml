@@ -1,0 +1,44 @@
+# data/itinerary.yml
+days:
+  - date: "2026-05-11 (Mon)"
+    title: "京都抵達 - 車站光影"
+    spots:
+      - time: "15:00"
+        name: "京都車站 (Kyoto Station)"
+        note: "📸 拍攝空中徑路 (Skyway) 的鋼骨結構。建議搭電梯，護膝優先。"
+  - date: "2026-05-12 (Tue)"
+    title: "嵐山攝影日"
+    spots:
+      - time: "07:30"
+        name: "竹林小徑"
+        note: "📸 iPhone 17 Pro 廣角拍攝延伸感。坡度平緩，膝蓋友善。"
+  - date: "2026-05-13 (Wed)"
+    title: "清水寺與三年坂"
+    spots:
+      - time: "06:00"
+        name: "清晨清水寺"
+        note: "注意：階梯極多。建議下坡慢慢走，或利用無障礙坡道。"
+  - date: "2026-05-14 (Thu)"
+    title: "哲學之道 - 禪意散步"
+    spots:
+      - time: "10:00"
+        name: "銀閣寺至法然院"
+        note: "📸 捕捉苔蘚與枯山水。路徑平坦，適合慢行攝影。"
+  - date: "2026-05-15 (Fri)"
+    title: "宇治茶香與平等院"
+    spots:
+      - time: "11:00"
+        name: "平等院鳳凰堂"
+        note: "📸 拍攝對稱建築美學。全區平坦，膝蓋休息日。"
+  - date: "2026-05-16 (Sat)"
+    title: "祇園與鴨川"
+    spots:
+      - time: "16:00"
+        name: "鴨川納涼床"
+        note: "📸 夕陽暖色調攝影。適合在河邊放鬆，整理 2015 MBP 上的代碼。"
+  - date: "2026-05-17 (Sun)"
+    title: "行程總結 - 伴手禮時間"
+    spots:
+      - time: "10:00"
+        name: "錦市場"
+        note: "最後的京都縮影拍攝，準備回國。"
