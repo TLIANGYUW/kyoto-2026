@@ -1,10 +1,9 @@
-# 請確保 baseURL 結尾有斜線，且帳號名稱正確
 baseURL = "https://tliangyuw.github.io/kyoto-2026/"
 languageCode = "zh-tw"
 title = "Liang-Yu | 2026 京都之旅"
 theme = "blowfish"
 
 [params]
-  # 啟用 Blowfish 的首頁樣式
-  mainSections = ["posts"]
   showSummary = true
+  # 讓首頁能夠正確讀取 content 目錄下的內容
+  homepage = { layout = "profile" }
