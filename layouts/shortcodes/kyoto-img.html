@@ -1,0 +1,6 @@
+{{ $image := .Page.Resources.GetMatch (.Get 0) }}
+{{ $scaled := $image.Resize "1000x webp q85" }}
+<figure class="my-6 text-center">
+  <img src="{{ $scaled.RelPermalink }}" class="rounded-xl shadow-lg mx-auto" alt="{{ .Get 1 }}">
+  <figcaption class="text-xs text-gray-400 mt-2">📸 {{ .Get 1 }}</figcaption>
+</figure>
