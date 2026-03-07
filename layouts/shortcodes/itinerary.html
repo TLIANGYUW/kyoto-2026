@@ -1,26 +1,55 @@
-<div class="itinerary-table">
-  {{ range .Site.Data.itinerary.itinerary }}
-  <div class="day-block" style="border-bottom: 1px solid #eee; padding: 15px 0;">
-    <h4>{{ .day }} - {{ .area }}</h4>
-    
-    <div class="activity">
-      <strong>上午：</strong> {{ .morning }}
-      {{ if .morning_map }}
-        <a href="{{ .morning_map }}" target="_blank" title="導航">📍</a>
-      {{ end }}
+<div class="itinerary-container">
+  
+  <div class="stay-info-section" style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+    <h3 style="margin-top: 0;">🏨 住宿安排</h3>
+    {{ range .Site.Data.itinerary.stay_info }}
+    <div class="stay-card" style="margin-bottom: 15px; border-left: 4px solid #007bff; padding-left: 15px;">
+      <span style="font-weight: bold; color: #555;">{{ .period }}</span><br>
+      <span style="font-size: 1.1em; font-weight: bold;">
+        {{ if .hotel_url }}
+          <a href="{{ .hotel_url }}" target="_blank" rel="noopener" style="text-decoration: underline;">{{ .hotel }}</a>
+        {{ else }}
+          {{ .hotel }}
+        {{ end }}
+        {{ if .map_url }}
+          <a href="{{ .map_url }}" target="_blank" title="查看 Google Maps" style="text-decoration: none;"> 📍</a>
+        {{ end }}
+      </span>
+      <p style="margin: 5px 0 0 0; font-size: 0.9em; color: #666;">✨ {{ .features }}</p>
     </div>
-    
-    <div class="activity">
-      <strong>下午：</strong> {{ .afternoon }}
-      {{ if .afternoon_map }}
-        <a href="{{ .afternoon_map }}" target="_blank" title="導航">📍</a>
-      {{ end }}
-    </div>
-    
-    <div class="note" style="font-size: 0.9em; color: #666; margin-top: 5px;">
-      <span class="tag" style="background: #f0f0f0; padding: 2px 6px;">{{ .transport }}</span> 
-      {{ .note }}
-    </div>
+    {{ end }}
   </div>
-  {{ end }}
+
+  <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+  <div class="itinerary-section">
+    <h3>🗺️ 每日行程大綱</h3>
+    {{ range .Site.Data.itinerary.itinerary }}
+    <div class="day-block" style="border-bottom: 1px solid #efefef; padding: 20px 0;">
+      <h4 style="color: #2c3e50; margin-bottom: 10px;">{{ .day }} - {{ .area }}</h4>
+      
+      <div class="activity" style="margin-bottom: 8px;">
+        <strong>☀️ 上午：</strong> {{ .morning }}
+        {{ if .morning_map }}
+          <a href="{{ .morning_map }}" target="_blank" rel="noopener" style="text-decoration: none;">📍</a>
+        {{ end }}
+      </div>
+      
+      <div class="activity" style="margin-bottom: 8px;">
+        <strong>🌙 下午：</strong> {{ .afternoon }}
+        {{ if .afternoon_map }}
+          <a href="{{ .afternoon_map }}" target="_blank" rel="noopener" style="text-decoration: none;">📍</a>
+        {{ end }}
+      </div>
+      
+      <div class="meta" style="font-size: 0.85em; color: #7f8c8d; margin-top: 10px;">
+        <span style="background: #e8f4fd; color: #3498db; padding: 2px 8px; border-radius: 4px; font-weight: bold; margin-right: 10px;">
+          {{ .transport }}
+        </span>
+        <span>💡 {{ .note }}</span>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
 </div>
