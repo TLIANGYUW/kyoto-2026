@@ -4,6 +4,6 @@ title = "Liang-Yu | 2026 京都之旅"
 theme = "blowfish"
 
 [params]
-  showSummary = true
-  # 讓首頁能夠正確讀取 content 目錄下的內容
-  homepage = { layout = "profile" }
+showSummary = false
+  # 將首頁版型改為 "page"，這樣它就只會顯示 _index.md 的內容
+  homepage = { layout = "page" }
