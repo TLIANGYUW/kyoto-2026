@@ -4,16 +4,8 @@ user: "Liang-Yu"
 
 # 航班資訊區塊 (Flight Info)
 flight_info:
-  outbound:
-    code: "CI156"
-    time: "08:20 - 12:00"
-    route: "TPE ➔ KIX"
-    note: "早起出發 / 優先行李處理"
-  inbound:
-    code: "CI153"
-    time: "14:30 - 16:25"
-    route: "KIX ➔ TPE"
-    note: "午後返程 / 華航貴賓室"
+  outbound: { code: "CI156", time: "08:20 - 12:00", route: "TPE ➔ KIX" }
+  inbound: { code: "CI153", time: "14:30 - 16:25", route: "KIX ➔ TPE" }
 
 # 住宿資訊區塊 (Stay Info) - 已還原為兩間候選飯店
 stay_info:
