@@ -17,14 +17,15 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.128.0'
           extended: true
       - name: Build
-        run: hugo --minify
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        run: hugo --minify --gc
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: ./public
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
   deploy:
     runs-on: ubuntu-latest
     needs: build
