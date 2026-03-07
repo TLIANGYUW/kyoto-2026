@@ -51,4 +51,22 @@
         </div>
         {{ end }}
     </section>
+
+    <!-- 每日行程細節 (Daily Detail) -->
+    <div class="itinerary-list">
+    {{ range .Site.Data.itinerary.itinerary }}
+    <div class="day-card" style="border-bottom: 1px solid #eee; padding: 15px 0;">
+        <h4 style="margin: 0;">
+            <!-- 如果有 slug 就建立連結到 /itinerary/day-1 -->
+            {{ if .slug }}
+                <a href="/itinerary/{{ .slug }}" style="color: #2563eb; text-decoration: underline;">{{ .day }} - {{ .area }}</a>
+            {{ else }}
+                {{ .day }} - {{ .area }}
+            {{ end }}
+        </h4>
+        <p style="font-size: 0.9rem; margin: 8px 0;">☀️ {{ .morning }}</p>
+        <p style="font-size: 0.9rem; margin: 8px 0;">🌙 {{ .afternoon }}</p>
+    </div>
+    {{ end }}
+</div>
 </div>

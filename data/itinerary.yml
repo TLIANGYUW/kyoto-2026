@@ -35,14 +35,14 @@ stay_info:
 
 itinerary:
   - day: "Day 1"
+    slug: "day-1"
     area: "京都車站 / 錦市場 / 鴨川"
-    morning: "CI156 抵達與 Haruka 接駁"
-    m_map: "https://www.google.com/maps/search/?api=1&query=Kyoto+Station"
+    morning: "12:00 抵達 KIX / Haruka 接駁"
     afternoon: "錦市場散策 & 鴨川河畔休憩"
+    transport: "Haruka + 計程車"
+    note: "首日護膝：錦市場路面平順。傍晚鴨川坐著攝影，減少站立負擔。"
+    m_map: "https://www.google.com/maps/search/?api=1&query=Kyoto+Station"
     a_map: "https://www.google.com/maps/search/?api=1&query=Nishiki+Market"
-    transport: "Haruka + 地鐵烏丸線"
-    note: "錦市場路面平順。傍晚在鴨川久坐休息，減輕膝蓋負擔。"
-    # ... (Day 2-7 維持不變)
 
   - day: "Day 2"
     area: "嵐山 / 金閣寺"
