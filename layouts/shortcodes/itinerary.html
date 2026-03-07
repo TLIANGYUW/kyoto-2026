@@ -1,41 +1,52 @@
-<div class="itinerary-wrapper" style="max-width: 800px; margin: auto; font-family: sans-serif;">
+<!-- 檔案路徑：layouts/shortcodes/itinerary.html -->
+<div class="itinerary-wrapper" style="max-width: 800px; margin: auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6;">
     
-    <!-- 1. 航班資訊 (Flight Info) - 新增區塊 -->
-    <section class="flight-section" style="display: grid; grid-template-cols: 1fr 1fr; gap: 10px; margin-bottom: 2rem;">
-        <div style="background: #eef2ff; padding: 15px; border-radius: 8px; border-left: 5px solid #4f46e5;">
-            <p style="margin: 0; font-size: 0.75rem; font-weight: bold; color: #4f46e5;">去程 {{ .Site.Data.itinerary.flight_info.outbound.code }}</p>
-            <p style="margin: 5px 0; font-size: 1.1rem; font-weight: bold;">{{ .Site.Data.itinerary.flight_info.outbound.time }}</p>
-            <p style="margin: 0; font-size: 0.8rem; color: #666;">{{ .Site.Data.itinerary.flight_info.outbound.route }} ({{ .Site.Data.itinerary.flight_info.outbound.note }})</p>
+    <!-- 航班資訊 (Flight Info) -->
+    {{ with .Site.Data.itinerary.flight_info }}
+    <section style="display: flex; gap: 15px; margin-bottom: 25px;">
+        <div style="flex: 1; background: #f0f7ff; border-left: 6px solid #2563eb; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: #2563eb; text-transform: uppercase;">去程 {{ .outbound.code }}</div>
+            <div style="font-size: 1.25rem; font-weight: 900; margin: 4px 0;">{{ .outbound.time }}</div>
+            <div style="font-size: 0.85rem; color: #475569;">{{ .outbound.route }} <br> <span style="font-style: italic;">{{ .outbound.note }}</span></div>
         </div>
-        <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 5px solid #94a3b8;">
-            <p style="margin: 0; font-size: 0.75rem; font-weight: bold; color: #64748b;">回程 {{ .Site.Data.itinerary.flight_info.inbound.code }}</p>
-            <p style="margin: 5px 0; font-size: 1.1rem; font-weight: bold;">{{ .Site.Data.itinerary.flight_info.inbound.time }}</p>
-            <p style="margin: 0; font-size: 0.8rem; color: #666;">{{ .Site.Data.itinerary.flight_info.inbound.route }} ({{ .Site.Data.itinerary.flight_info.inbound.note }})</p>
+        <div style="flex: 1; background: #f8fafc; border-left: 6px solid #64748b; padding: 15px; border-radius: 8px;">
+            <div style="font-size: 0.75rem; font-weight: bold; color: #64748b; text-transform: uppercase;">回程 {{ .inbound.code }}</div>
+            <div style="font-size: 1.25rem; font-weight: 900; margin: 4px 0;">{{ .inbound.time }}</div>
+            <div style="font-size: 0.85rem; color: #475569;">{{ .inbound.route }} <br> <span style="font-style: italic;">{{ .inbound.note }}</span></div>
         </div>
     </section>
+    {{ end }}
 
-    <!-- 2. 住宿安排 (Stay Info) -->
-    <section class="stay-section" style="border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; background: #fff;">
-        <h3 style="margin-top: 0; font-size: 1.2rem;">🏨 住宿與物流</h3>
+    <!-- 住宿資訊 (Stay Info) -->
+    <section style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+        <h3 style="margin-top: 0; color: #1e293b; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">🏨 住宿與物流安排</h3>
         {{ range .Site.Data.itinerary.stay_info }}
-        <div style="margin-bottom: 1rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
-            <strong style="color: #475569;">{{ .period }}</strong>: 
-            <a href="{{ .hotel_url }}" target="_blank" style="color: #2563eb;">{{ .hotel }}</a> 
-            <a href="{{ .map_url }}" target="_blank" style="text-decoration: none;">📍</a>
-            <p style="font-size: 0.85rem; color: #64748b; margin: 0.2rem 0;">✨ {{ .features }}</p>
+        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0;">
+            <div style="font-size: 0.8rem; font-weight: bold; color: #64748b;">{{ .period }}</div>
+            <div style="font-size: 1rem; font-weight: bold;">
+                <a href="{{ .hotel_url }}" target="_blank" style="color: #2563eb; text-decoration: none;">{{ .hotel }}</a>
+                <a href="{{ .map_url }}" target="_blank" style="text-decoration: none; margin-left: 8px;">📍</a>
+            </div>
+            <div style="font-size: 0.85rem; color: #475569; margin-top: 4px;">✨ {{ .features }}</div>
         </div>
         {{ end }}
     </section>
 
-    <!-- 3. 每日行程 (Itinerary) -->
-    <section class="daily-itinerary">
+    <!-- 每日行程 (Daily Itinerary) -->
+    <section>
         {{ range .Site.Data.itinerary.itinerary }}
-        <div style="margin-bottom: 2rem; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-            <h4 style="margin: 0 0 10px 0; color: #1e293b;">{{ .day }} - {{ .area }}</h4>
-            <p style="margin: 5px 0; font-size: 0.95rem;"><strong>☀️ 上午</strong>: {{ .morning }} <a href="{{ .m_map }}" target="_blank">📍</a></p>
-            <p style="margin: 5px 0; font-size: 0.95rem;"><strong>🌙 下午</strong>: {{ .afternoon }} <a href="{{ .a_map }}" target="_blank">📍</a></p>
-            <div style="background: #f1f5f9; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 0.85rem;">
-                💡 <strong>護膝筆記</strong>: {{ .note }} <span style="color: #2563eb; font-weight: bold;">[{{ .transport }}]</span>
+        <div style="background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid #e2e8f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h4 style="margin: 0; font-size: 1.1rem; color: #1e293b;">{{ .day }} - {{ .area }}</h4>
+            </div>
+            <div style="font-size: 0.95rem; margin-bottom: 6px;">
+                <strong>☀️ 上午：</strong> {{ .morning }} <a href="{{ .m_map }}" target="_blank" style="text-decoration: none;">📍</a>
+            </div>
+            <div style="font-size: 0.95rem; margin-bottom: 10px;">
+                <strong>🌙 下午：</strong> {{ .afternoon }} <a href="{{ .a_map }}" target="_blank" style="text-decoration: none;">📍</a>
+            </div>
+            <div style="background: #f1f5f9; padding: 12px; border-radius: 8px; font-size: 0.85rem;">
+                <span style="color: #2563eb; font-weight: bold;">[ {{ .transport }} ]</span> {{ .note }}
             </div>
         </div>
         {{ end }}
