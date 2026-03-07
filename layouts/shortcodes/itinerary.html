@@ -19,8 +19,8 @@
     <div style="background: white; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
         <h3 style="margin: 0 0 10px 0; font-size: 1.1rem;">
             {{ if .slug }}
-            <!-- 使用 absURL 自動處理 baseURL 中的子路徑 -->
-            <a href="{{ (printf "itinerary/%s/" .slug) | absURL }}" style="color: #2563eb; text-decoration: none;">
+            <!-- 終極修正：直接使用 relURL 加上完整的相對路徑 -->
+            <a href="{{ (printf "/itinerary/%s/" .slug) | relURL }}" style="color: #2563eb; text-decoration: underline;">
                 {{ .day }} - {{ .area }} 🔗
             </a>
             {{ else }}
@@ -31,7 +31,7 @@
             <p style="margin: 4px 0;">☀️ {{ .morning }}</p>
             <p style="margin: 4px 0;">🌙 {{ .afternoon }}</p>
         </div>
-        <div style="background: #f8fafc; padding: 8px; border-radius: 8px; margin-top: 10px; font-size: 0.75rem; border: 1px solid #edf2f7;">
+        <div style="background: #f8fafc; padding: 10px; border-radius: 8px; margin-top: 10px; font-size: 0.75rem; border: 1px solid #edf2f7;">
             <span style="color: #2563eb; font-weight: bold;">[ {{ .transport }} ]</span> {{ .note }}
         </div>
     </div>
