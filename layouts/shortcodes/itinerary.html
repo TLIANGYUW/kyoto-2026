@@ -1,15 +1,29 @@
-<div class="itinerary">
-  {{ range $.Site.Data.itinerary.days }}
-    <div class="day-section mb-10">
-      <h3 class="text-xl font-bold border-b-2 pb-2">{{ .date }} - {{ .title }}</h3>
-      <ul class="mt-4 space-y-4">
-        {{ range .spots }}
-          <li class="flex flex-col">
-            <span class="font-semibold text-primary-600">{{ .time }} | {{ .name }}</span>
-            <p class="text-sm text-gray-600 mt-1">{{ .note }}</p>
-          </li>
-        {{ end }}
-      </ul>
-    </div>
-  {{ end }}
+<div class="itinerary-table">
+  <table>
+    <thead>
+      <tr>
+        <th>日期</th>
+        <th>區域</th>
+        <th>行程內容</th>
+        <th>交通/備註</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .Site.Data.itinerary.itinerary }}
+      <tr>
+        <td><strong>{{ .day }}</strong><br><small>{{ .date }}</small></td>
+        <td>{{ .area }}</td>
+        <td>
+          <strong>AM:</strong> {{ .morning }}<br>
+          <strong>PM:</strong> {{ .afternoon }}<br>
+          <em style="color: #666;">📸 {{ .photo_tip }}</em>
+        </td>
+        <td>
+          <span class="tag">{{ .transport }}</span><br>
+          <small>{{ .note }}</small>
+        </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
 </div>
