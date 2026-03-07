@@ -3,7 +3,7 @@ on:
   push:
     branches: ["main"]
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 jobs:
@@ -14,17 +14,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 0 # 確保抓取完整歷史（對於主題模組很重要）
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          # 升級至 v0.145.0 以支援 "try" 函數與 Blowfish 最新邏輯
           hugo-version: '0.145.0' 
           extended: true
 
       - name: Build
-        # 執行編譯，--gc 用於清理暫存，--minify 進行壓縮
         run: hugo --minify --gc
 
       - name: Deploy
