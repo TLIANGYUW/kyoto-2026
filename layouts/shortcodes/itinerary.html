@@ -20,7 +20,7 @@
         <h3 style="margin: 0 0 10px 0; font-size: 1.1rem;">
             {{ if .slug }}
             <!-- 終極修正：直接使用 relURL 加上完整的相對路徑 -->
-            <a href="{{ (printf "/itinerary/%s/" .slug) | relURL }}" style="color: #2563eb; text-decoration: underline;">
+            <a href="{{ (printf "/itinerary/%s/" .slug) | relURL }}" style="color: #2563eb; text-decoration: none;">
                 {{ .day }} - {{ .area }} 🔗
             </a>
             {{ else }}

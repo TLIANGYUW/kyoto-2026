@@ -7,6 +7,3 @@ theme = "blowfish"
   showSummary = false
   # 將首頁改為單一頁面模式，防止自動抓取文章
   homepage = { layout = "page" }
-  # 建議加入以下設定，增加連結相容性
-  canonifyURLs = true
-  relativeURLs = true
